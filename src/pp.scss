@@ -1,0 +1,34 @@
+body {
+  background-color: rgb(224, 224, 224);
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.que1 {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+
+  .inner_que {
+    max-width: 500px;
+
+    min-width: 300px;
+  }
+  p {
+    margin: 0;
+  }
+}
+.que2 {
+  text-align: center;
+
+  .btm {
+    margin-top: 10vh;
+  }
+
+  .compX p {
+    text-align: center;
+    padding: 10px;
+    font-size: 24px;
+  }
+}
