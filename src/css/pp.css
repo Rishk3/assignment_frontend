@@ -34,6 +34,11 @@ body {
   margin-top: 10vh;
 }
 
+.que2 .compX {
+  margin: 40px;
+  background-color: #a198aa;
+}
+
 .que2 .compX p {
   text-align: center;
   padding: 10px;

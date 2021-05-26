@@ -23,6 +23,10 @@ class Compo5 extends Component {
         <input
           type="text"
           style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "20px",
             top: "50%",
             left: "40%",
             position: "absolute",

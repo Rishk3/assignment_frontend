@@ -7,6 +7,10 @@ const Compo3 = (props) => {
       <div
         className="compo3"
         style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "20px",
           height: "200px",
           width: "200px",
           backgroundColor: "blue",

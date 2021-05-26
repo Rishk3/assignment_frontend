@@ -78,7 +78,7 @@ export default function Q2() {
         {showX &&
           totalX.map((p, idx) => {
             return <CompX key={idx} noX={idx} />;
-          })}{" "}
+          })}
       </div>
     </div>
   );

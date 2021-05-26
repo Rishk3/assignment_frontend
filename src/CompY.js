@@ -1,23 +1,43 @@
 import React, { useState } from "react";
+import { useDataLayerValue } from "./context_api/DataLayer";
 
 export default function CompY({ noX, noY, nameX }) {
+  const [{ data }, dispatch] = useDataLayerValue();
+  let xnameArr = [];
+  let jsonData = [];
+  let finalObj = {};
+  data.forEach(({ nameX, nameAtY }) => {
+    if (nameX in finalObj) {
+      finalObj[nameX].push(nameAtY);
+    } else {
+      finalObj[nameX] = [nameAtY];
+    }
+  });
+  jsonData.push(finalObj);
+  console.log("final Json Data", jsonData);
+
   const [showY, setshowY] = useState(false);
   const [editName, setEditName] = useState(true);
-  const [newName, setNewName] = useState("Click Edit to change Name");
+  const [nameAtY, setnameAtY] = useState("Click Edit to change Name");
   const [totalY, setTotalY] = useState([]);
   const handleOnclick = () => {
     setTotalY((totalX) => [...totalX, Math.random() * 100]);
   };
 
   const handleInputName = (e) => {
-    setNewName(e.target.value);
+    setnameAtY(e.target.value);
   };
 
   const saveNameClick = (e) => {
+    dispatch({
+      type: "SET_DATA",
+      data: [
+        ...data,
+        { noX: noX + 1, noY: noY + 1, nameX: nameX, nameAtY: nameAtY },
+      ],
+    });
     let jsonData = [];
     setshowY(true);
-    console.log("nox", noX);
-    console.log("newName", nameX);
   };
   return (
     <div className="compY">
@@ -27,7 +47,7 @@ export default function CompY({ noX, noY, nameX }) {
         {editName ? (
           <input onChange={handleInputName} placeholder="type new Name" />
         ) : (
-          newName
+          nameAtY
         )}
         {editName && (
           <button onClick={saveNameClick} className=" btn btn-success mx-5">
@@ -35,11 +55,7 @@ export default function CompY({ noX, noY, nameX }) {
           </button>
         )}
       </p>
-      {showY && (
-        <p>
-          Final Result: X{noX + 1}:{nameX},Y{noY + 1}:{newName}
-        </p>
-      )}
+      {showY && <p>Final Result:please check in console</p>}
     </div>
   );
 }
